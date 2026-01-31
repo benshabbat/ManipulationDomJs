@@ -13,12 +13,20 @@ A comprehensive collection of progressive exercises for learning DOM manipulatio
 <div id="mainContent">Main content</div>
 ```
 
+**Goal:** Select an element by ID
+
+**Hint:** Use `document.getElementById()` to select an element by its ID
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
 ```javascript
 // Select by ID
 const mainContent = document.getElementById("mainContent");
 console.log(mainContent);
 ```
-**Goal:** Select an element by ID
+
+</details>
 
 ---
 
@@ -29,6 +37,13 @@ console.log(mainContent);
 <p class="paragraph">Paragraph 2</p>
 ```
 
+**Goal:** Select elements by class name
+
+**Hint:** Use `getElementsByClassName()` or `querySelectorAll()` to select multiple elements
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
 ```javascript
 // Select by class (returns HTMLCollection)
 const paragraphs = document.getElementsByClassName("paragraph");
@@ -38,7 +53,8 @@ console.log(paragraphs);
 const paragraphs2 = document.querySelectorAll(".paragraph");
 console.log(paragraphs2); // NodeList
 ```
-**Goal:** Select elements by class name
+
+</details>
 
 ---
 
@@ -50,6 +66,13 @@ console.log(paragraphs2); // NodeList
   <button class="btn">Button 2</button>
 </div>
 ```
+
+**Goal:** Select elements using CSS selectors
+
+**Hint:** `querySelector()` works with any CSS selector (ID, class, tag, etc.)
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 // Select first element with selector
@@ -65,7 +88,8 @@ const btn = document.querySelector(".btn");
 // Select nested element
 const btnInDiv = document.querySelector("div button");
 ```
-**Goal:** Select elements using CSS selectors
+
+</details>
 
 ---
 
@@ -76,6 +100,13 @@ const btnInDiv = document.querySelector("div button");
 <p>Paragraph 2</p>
 <p>Paragraph 3</p>
 ```
+
+**Goal:** Select multiple elements and iterate through them
+
+**Hint:** Use `querySelectorAll()` to get all matching elements, then loop with `forEach()`
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 // Select all paragraphs
@@ -92,7 +123,8 @@ for (let i = 0; i < allParagraphs.length; i++) {
   console.log(allParagraphs[i].textContent);
 }
 ```
-**Goal:** Select multiple elements and iterate through them
+
+</details>
 
 ---
 
@@ -104,6 +136,13 @@ for (let i = 0; i < allParagraphs.length; i++) {
 <div id="box">Old content</div>
 ```
 
+**Goal:** Change text content of an element
+
+**Hint:** Use `.textContent` property to set text
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
 ```javascript
 const div = document.getElementById("box");
 
@@ -111,7 +150,8 @@ const div = document.getElementById("box");
 div.textContent = "New content";
 console.log(div.textContent); // "New content"
 ```
-**Goal:** Change text content of an element
+
+</details>
 
 ---
 
@@ -120,6 +160,13 @@ console.log(div.textContent); // "New content"
 <!-- HTML -->
 <div id="box">Old content</div>
 ```
+
+**Goal:** Change HTML content with tags
+
+**Hint:** Use `.innerHTML` to set HTML tags
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const div = document.getElementById("box");
@@ -131,7 +178,8 @@ div.innerHTML = "<p>New paragraph</p> <p>Another paragraph</p>";
 // Add to existing content
 div.innerHTML += "<span> - Additional text</span>";
 ```
-**Goal:** Change HTML content with tags
+
+</details>
 
 ---
 
@@ -140,6 +188,13 @@ div.innerHTML += "<span> - Additional text</span>";
 <!-- HTML -->
 <input id="field" type="text" value="Old value">
 ```
+
+**Goal:** Change input field values
+
+**Hint:** Use `.value` property on input elements
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const field = document.getElementById("field");
@@ -153,7 +208,8 @@ field.value = "New value";
 // Clear the value
 field.value = "";
 ```
-**Goal:** Change input field values
+
+</details>
 
 ---
 
@@ -164,6 +220,13 @@ field.value = "";
 <!-- HTML -->
 <div id="box">Text to style</div>
 ```
+
+**Goal:** Change basic styles
+
+**Hint:** Use `element.style.propertyName` to change CSS properties (use camelCase)
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const div = document.getElementById("box");
@@ -180,7 +243,8 @@ div.style.backgroundColor = "yellow";
 // Change padding
 div.style.padding = "10px";
 ```
-**Goal:** Change basic styles
+
+</details>
 
 ---
 
@@ -199,6 +263,13 @@ div.style.padding = "10px";
 <div id="box">Text</div>
 ```
 
+**Goal:** Work with CSS classes
+
+**Hint:** Use `classList.add()`, `classList.remove()`, `classList.toggle()`
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
 ```javascript
 const div = document.getElementById("box");
 
@@ -216,7 +287,8 @@ if (div.classList.contains("active")) {
   console.log("Has active class");
 }
 ```
-**Goal:** Work with CSS classes
+
+</details>
 
 ---
 
@@ -226,6 +298,13 @@ if (div.classList.contains("active")) {
 <div id="box1">Section 1</div>
 <div id="box2">Section 2</div>
 ```
+
+**Goal:** Show and hide elements
+
+**Hint:** Use `display: "none"` to hide and `display: "block"` to show, or `visibility: "hidden"`
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const box1 = document.getElementById("box1");
@@ -240,7 +319,8 @@ box2.style.display = "none";
 // Show again
 box2.style.display = "block";
 ```
-**Goal:** Show and hide elements
+
+</details>
 
 ---
 
@@ -252,6 +332,13 @@ box2.style.display = "block";
 <img id="photo" src="image1.jpg" alt="Photo">
 <a id="link" href="https://google.com">Google</a>
 ```
+
+**Goal:** Read and change basic attributes
+
+**Hint:** Access attributes directly as properties: `element.src`, `element.href`, `element.alt`
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 // Read attribute
@@ -268,7 +355,8 @@ const link = document.getElementById("link");
 console.log(link.href); // "https://google.com"
 link.href = "https://facebook.com";
 ```
-**Goal:** Read and change basic attributes
+
+</details>
 
 ---
 
@@ -277,6 +365,13 @@ link.href = "https://facebook.com";
 <!-- HTML -->
 <div id="box" class="old-class">Text</div>
 ```
+
+**Goal:** Use getAttribute/setAttribute functions
+
+**Hint:** These work for any attribute, including custom ones
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const div = document.getElementById("box");
@@ -293,7 +388,8 @@ div.setAttribute("title", "This is a title");
 // Remove attribute
 div.removeAttribute("title");
 ```
-**Goal:** Use getAttribute/setAttribute functions
+
+</details>
 
 ---
 
@@ -302,6 +398,13 @@ div.removeAttribute("title");
 <!-- HTML -->
 <div id="box" data-user-id="456" data-name="David">Text</div>
 ```
+
+**Goal:** Work with data attributes
+
+**Hint:** Use `element.dataset.attributeName` (camelCase, without "data-" prefix)
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const div = document.getElementById("box");
@@ -317,7 +420,8 @@ div.dataset.role = "admin"; // Add new data attribute
 // Read another way
 console.log(div.getAttribute("data-user-id")); // "789"
 ```
-**Goal:** Work with data attributes
+
+</details>
 
 ---
 
@@ -328,6 +432,13 @@ console.log(div.getAttribute("data-user-id")); // "789"
 <!-- HTML -->
 <div id="container"></div>
 ```
+
+**Goal:** Create new elements
+
+**Hint:** Use `document.createElement()` to create, then `appendChild()` to add to DOM
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const container = document.getElementById("container");
@@ -344,7 +455,8 @@ const newDiv = document.createElement("div");
 newDiv.innerHTML = "<h3>New heading</h3>";
 container.appendChild(newDiv);
 ```
-**Goal:** Create new elements
+
+</details>
 
 ---
 
@@ -356,6 +468,13 @@ container.appendChild(newDiv);
   <li>Item 2</li>
 </ul>
 ```
+
+**Goal:** Insert elements at specific positions
+
+**Hint:** Use `insertBefore()` to insert before a specific child
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const list = document.getElementById("list");
@@ -370,7 +489,8 @@ list.insertBefore(newLi, list.children[1]);
 // Or append at the end
 list.appendChild(newLi);
 ```
-**Goal:** Insert elements at specific positions
+
+</details>
 
 ---
 
@@ -383,6 +503,13 @@ list.appendChild(newLi);
   <p id="p3">Paragraph 3</p>
 </div>
 ```
+
+**Goal:** Delete elements
+
+**Hint:** Use `.remove()` for modern browsers, or `.removeChild()` with parent
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const container = document.getElementById("container");
@@ -397,7 +524,8 @@ container.removeChild(p2);
 // Delete all children
 container.innerHTML = ""; // Remove everything
 ```
-**Goal:** Delete elements
+
+</details>
 
 ---
 
@@ -410,6 +538,13 @@ container.innerHTML = ""; // Remove everything
 <div id="message"></div>
 ```
 
+**Goal:** Listen for click events
+
+**Hint:** Use `addEventListener("click", function)`
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
 ```javascript
 const btn = document.getElementById("btn");
 
@@ -418,7 +553,8 @@ btn.addEventListener("click", function() {
   document.getElementById("message").textContent = "Button was clicked";
 });
 ```
-**Goal:** Listen for click events
+
+</details>
 
 ---
 
@@ -428,6 +564,13 @@ btn.addEventListener("click", function() {
 <input id="field" type="text" placeholder="Enter text">
 <div id="message"></div>
 ```
+
+**Goal:** Listen for input changes
+
+**Hint:** Use `"input"` event for real-time changes, `"change"` for when field loses focus
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const field = document.getElementById("field");
@@ -443,7 +586,8 @@ field.addEventListener("change", function() {
   console.log("Field value changed!");
 });
 ```
-**Goal:** Listen for input changes
+
+</details>
 
 ---
 
@@ -452,6 +596,13 @@ field.addEventListener("change", function() {
 <!-- HTML -->
 <div id="box">Hover over me</div>
 ```
+
+**Goal:** Handle mouse events
+
+**Hint:** Use `"mouseover"` and `"mouseleave"` events
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const box = document.getElementById("box");
@@ -466,7 +617,8 @@ box.addEventListener("mouseleave", function() {
   this.style.backgroundColor = "white";
 });
 ```
-**Goal:** Handle mouse events
+
+</details>
 
 ---
 
@@ -477,6 +629,13 @@ box.addEventListener("mouseleave", function() {
 <button class="btn">Button 2</button>
 <button class="btn">Button 3</button>
 ```
+
+**Goal:** Use event.target
+
+**Hint:** `event.target` is the element that triggered the event
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const buttons = document.querySelectorAll(".btn");
@@ -489,7 +648,8 @@ buttons.forEach(function(btn) {
   });
 });
 ```
-**Goal:** Use event.target
+
+</details>
 
 ---
 
@@ -503,6 +663,13 @@ buttons.forEach(function(btn) {
   <li>Item 1</li>
 </ul>
 ```
+
+**Goal:** Dynamically add elements
+
+**Hint:** Increment a counter and create new elements in the event listener
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const btn = document.getElementById("addBtn");
@@ -520,7 +687,8 @@ btn.addEventListener("click", function() {
   list.appendChild(newLi);
 });
 ```
-**Goal:** Dynamically add elements
+
+</details>
 
 ---
 
@@ -530,6 +698,13 @@ btn.addEventListener("click", function() {
 <button id="addBtn">Add</button>
 <ul id="list"></ul>
 ```
+
+**Goal:** Dynamically delete elements
+
+**Hint:** Create a delete button for each item with its own event listener
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const btn = document.getElementById("addBtn");
@@ -554,7 +729,8 @@ btn.addEventListener("click", function() {
   list.appendChild(li);
 });
 ```
-**Goal:** Dynamically delete elements
+
+</details>
 
 ---
 
@@ -565,6 +741,13 @@ btn.addEventListener("click", function() {
 <!-- HTML -->
 <div id="output"></div>
 ```
+
+**Goal:** Use template literals for string interpolation
+
+**Hint:** Use backticks `` ` `` and `${variable}` syntax
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const name = "John";
@@ -585,7 +768,8 @@ console.log(multiLine);
 
 document.getElementById("output").innerHTML = message;
 ```
-**Goal:** Use template literals for string interpolation
+
+</details>
 
 ---
 
@@ -594,6 +778,13 @@ document.getElementById("output").innerHTML = message;
 <!-- HTML -->
 <div id="output"></div>
 ```
+
+**Goal:** Create HTML with template literals
+
+**Hint:** Put HTML tags inside the template literal
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const person = {
@@ -613,7 +804,8 @@ const html = `
 
 document.getElementById("output").innerHTML = html;
 ```
-**Goal:** Create HTML with template literals
+
+</details>
 
 ---
 
@@ -622,6 +814,13 @@ document.getElementById("output").innerHTML = html;
 <!-- HTML -->
 <div id="output"></div>
 ```
+
+**Goal:** Create lists with template literals and map
+
+**Hint:** Use `array.map()` to transform each item, then `.join("")` to combine
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const fruits = ["Apple", "Banana", "Orange", "Mango"];
@@ -635,7 +834,8 @@ const html = `
 
 document.getElementById("output").innerHTML = html;
 ```
-**Goal:** Create lists with template literals and map
+
+</details>
 
 ---
 
@@ -644,6 +844,13 @@ document.getElementById("output").innerHTML = html;
 <!-- HTML -->
 <div id="output"></div>
 ```
+
+**Goal:** Create complex layouts from data
+
+**Hint:** Use map() on array of objects and access properties with dot notation
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const users = [
@@ -666,7 +873,8 @@ const html = `
 
 document.getElementById("output").innerHTML = html;
 ```
-**Goal:** Create complex layouts from data
+
+</details>
 
 ---
 
@@ -684,6 +892,13 @@ document.getElementById("output").innerHTML = html;
 <div id="output"></div>
 ```
 
+**Goal:** Use HTML template elements
+
+**Hint:** Clone with `cloneNode(true)`, then fill in the content with `querySelector()`
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
 ```javascript
 const template = document.getElementById("cardTemplate");
 
@@ -697,7 +912,8 @@ clone.querySelector("p").textContent = "Price: $100";
 // Add to DOM
 document.getElementById("output").appendChild(clone);
 ```
-**Goal:** Use HTML template elements
+
+</details>
 
 ---
 
@@ -712,6 +928,13 @@ document.getElementById("output").appendChild(clone);
 </template>
 <ul id="list"></ul>
 ```
+
+**Goal:** Create multiple items from template
+
+**Hint:** Loop through data array and clone for each item
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const template = document.getElementById("itemTemplate");
@@ -730,7 +953,8 @@ items.forEach(item => {
   document.getElementById("list").appendChild(clone);
 });
 ```
-**Goal:** Create multiple items from template
+
+</details>
 
 ---
 
@@ -742,6 +966,13 @@ items.forEach(item => {
 </template>
 <div id="output"></div>
 ```
+
+**Goal:** Add event listeners to template elements
+
+**Hint:** Add the event listener to each cloned element before appending
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const template = document.getElementById("buttonTemplate");
@@ -759,7 +990,8 @@ buttons.forEach(btnText => {
   document.getElementById("output").appendChild(clone);
 });
 ```
-**Goal:** Add event listeners to template elements
+
+</details>
 
 ---
 
@@ -777,6 +1009,13 @@ buttons.forEach(btnText => {
 <form id="form"></form>
 ```
 
+**Goal:** Generate forms dynamically
+
+**Hint:** Create a template with one form field, then clone it for each field
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
 ```javascript
 const template = document.getElementById("inputTemplate");
 const fields = ["First Name", "Last Name", "Email"];
@@ -790,7 +1029,8 @@ fields.forEach(field => {
   document.getElementById("form").appendChild(clone);
 });
 ```
-**Goal:** Generate forms dynamically
+
+</details>
 
 ---
 
@@ -816,6 +1056,13 @@ fields.forEach(field => {
 </table>
 ```
 
+**Goal:** Generate tables from data
+
+**Hint:** Clone the row template for each data item
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
 ```javascript
 const template = document.getElementById("rowTemplate");
 const data = [
@@ -836,7 +1083,8 @@ data.forEach(row => {
   tbody.appendChild(clone);
 });
 ```
-**Goal:** Generate tables from data
+
+</details>
 
 ---
 
@@ -854,6 +1102,13 @@ data.forEach(row => {
 <button id="addBtn">Add</button>
 <div id="todos"></div>
 ```
+
+**Goal:** Create interactive components with templates
+
+**Hint:** Add event listeners to each cloned element's checkbox and delete button
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const template = document.getElementById("todoTemplate");
@@ -894,7 +1149,8 @@ input.addEventListener("keypress", function(e) {
   }
 });
 ```
-**Goal:** Create interactive components with templates
+
+</details>
 
 ---
 
@@ -906,6 +1162,13 @@ input.addEventListener("keypress", function(e) {
 <div id="output1"></div>
 <div id="output2"></div>
 ```
+
+**Goal:** Understand when to use each method
+
+**Hint:** Template literals are simpler for quick rendering, templates are better for reusable components
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const products = [
@@ -929,7 +1192,8 @@ document.getElementById("output1").innerHTML = html1;
 // Method 2: Template elements (better for reusable components)
 // See Exercise 9.2 for template element approach
 ```
-**Goal:** Understand when to use each method
+
+</details>
 
 ---
 
@@ -938,6 +1202,13 @@ document.getElementById("output1").innerHTML = html1;
 <!-- HTML -->
 <div id="output"></div>
 ```
+
+**Goal:** Use advanced template literals with conditionals
+
+**Hint:** Use ternary operator inside `${}` for conditional content
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const products = [
@@ -970,7 +1241,8 @@ document.querySelectorAll(".buy-btn:not(:disabled)").forEach(btn => {
   });
 });
 ```
-**Goal:** Use advanced template literals with conditionals
+
+</details>
 
 ---
 
@@ -994,6 +1266,13 @@ document.querySelectorAll(".buy-btn:not(:disabled)").forEach(btn => {
   <ul id="todoList"></ul>
 </div>
 ```
+
+**Goal:** Build a complete todo list application
+
+**Hint:** Combine template cloning, event handling, and dynamic data management
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const template = document.getElementById("todoTemplate");
@@ -1033,6 +1312,8 @@ input.addEventListener("keypress", function(e) {
 });
 ```
 
+</details>
+
 ---
 
 ### Project 12.2: Card Layout Generator
@@ -1051,6 +1332,13 @@ input.addEventListener("keypress", function(e) {
 
 <div id="cardsContainer" class="cards-grid"></div>
 ```
+
+**Goal:** Generate product cards from data
+
+**Hint:** Use template cloning to create multiple cards with different data
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const template = document.getElementById("cardTemplate");
@@ -1075,6 +1363,8 @@ products.forEach(product => {
 });
 ```
 
+</details>
+
 ---
 
 ### Project 12.3: Search and Filter
@@ -1096,6 +1386,13 @@ products.forEach(product => {
 </select>
 <div id="itemsContainer"></div>
 ```
+
+**Goal:** Create a searchable and filterable item list
+
+**Hint:** Combine filtering logic with template rendering
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
 
 ```javascript
 const template = document.getElementById("itemTemplate");
@@ -1148,6 +1445,8 @@ categoryFilter.addEventListener("change", filterItems);
 renderItems(items);
 ```
 
+</details>
+
 ---
 
 ## 🎓 Important Tips for Beginners
@@ -1161,6 +1460,13 @@ renderItems(items);
 6. **Choose Your Method:**
    - **Template Literals**: Simple lists, quick rendering
    - **Template Elements**: Reusable components, complex structures
+
+---
+
+## 📁 Additional Files
+
+- **ADVANCED-EXERCISES.md** - Advanced topics (event delegation, DOM traversal, forms, animations, storage, fetch API)
+- **MINI-CHALLENGES.md** - Quick coding challenges (coming soon)
 
 ---
 
