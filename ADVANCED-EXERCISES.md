@@ -79,6 +79,37 @@ list.addEventListener("click", function(event) {
 
 ---
 
+### Exercise 13.3: Delete items with delegation
+```html
+<!-- HTML -->
+<ul id="todoList">
+  <li>Task 1 <button class="delete">×</button></li>
+  <li>Task 2 <button class="delete">×</button></li>
+  <li>Task 3 <button class="delete">×</button></li>
+</ul>
+```
+
+**Task:** Use event delegation to delete items when the delete button is clicked.
+
+**Hint:** Check if the clicked element has the class "delete" and remove its parent `<li>`
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
+```javascript
+const todoList = document.getElementById("todoList");
+
+todoList.addEventListener("click", function(event) {
+  if (event.target.classList.contains("delete")) {
+    event.target.parentElement.remove();
+  }
+});
+```
+
+</details>
+
+---
+
 ## 📚 Level 14: DOM Traversal
 
 ### Exercise 14.1: Navigate parent and children
@@ -149,6 +180,49 @@ for (let i = 0; i < children.length; i++) {
 const spans = parent.querySelectorAll("span");
 spans.forEach(span => {
   span.style.backgroundColor = "yellow";
+});
+```
+
+</details>
+
+---
+
+### Exercise 14.3: Navigate up and down the tree
+```html
+<!-- HTML -->
+<div class="user">
+  <h3 class="username">John</h3>
+  <p class="email">john@example.com</p>
+  <button class="edit">Edit</button>
+</div>
+<div class="user">
+  <h3 class="username">Jane</h3>
+  <p class="email">jane@example.com</p>
+  <button class="edit">Edit</button>
+</div>
+```
+
+**Task:** When Edit button is clicked, get the username and email from the same user card.
+
+**Hint:** Use `closest()` to find the parent container, then `querySelector()` to find siblings
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
+```javascript
+const editButtons = document.querySelectorAll(".edit");
+
+editButtons.forEach(btn => {
+  btn.addEventListener("click", function() {
+    // Find the closest parent with class "user"
+    const userCard = btn.closest(".user");
+    
+    // Get username and email from this card
+    const username = userCard.querySelector(".username").textContent;
+    const email = userCard.querySelector(".email").textContent;
+    
+    console.log(`Editing ${username} (${email})`);
+  });
 });
 ```
 
@@ -571,6 +645,92 @@ btn.addEventListener("click", function() {
 
 ---
 
+### Exercise 16.3: Rotate element on click
+```html
+<!-- HTML -->
+<style>
+  #box {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    transition: transform 0.5s ease;
+  }
+</style>
+<button id="rotateBtn">Rotate</button>
+<div id="box"></div>
+```
+
+**Task:** Click the button to rotate the box. Each click rotates it 90 degrees more.
+
+**Hint:** Use `transform: rotate()` and increment a rotation value
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
+```javascript
+const btn = document.getElementById("rotateBtn");
+const box = document.getElementById("box");
+let rotation = 0;
+
+btn.addEventListener("click", function() {
+  rotation += 90;
+  box.style.transform = `rotate(${rotation}deg)`;
+});
+```
+
+</details>
+
+---
+
+### Exercise 16.4: Multiple simultaneous animations
+```html
+<!-- HTML -->
+<style>
+  #element {
+    width: 100px;
+    height: 100px;
+    background-color: purple;
+    position: relative;
+    transition: all 0.5s ease;
+  }
+</style>
+<button id="animateBtn">Animate</button>
+<div id="element"></div>
+```
+
+**Task:** Click the button to move the element AND change its size AND color all at once.
+
+**Hint:** Change multiple CSS properties in one line
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
+```javascript
+const btn = document.getElementById("animateBtn");
+const element = document.getElementById("element");
+let isAnimated = false;
+
+btn.addEventListener("click", function() {
+  isAnimated = !isAnimated;
+  
+  if (isAnimated) {
+    element.style.left = "200px";
+    element.style.width = "150px";
+    element.style.height = "150px";
+    element.style.backgroundColor = "orange";
+  } else {
+    element.style.left = "0";
+    element.style.width = "100px";
+    element.style.height = "100px";
+    element.style.backgroundColor = "purple";
+  }
+});
+```
+
+</details>
+
+---
+
 ## 📚 Level 17: Data Storage
 
 ### Exercise 17.1: Save and load form data
@@ -690,6 +850,52 @@ renderItems();
 
 ---
 
+### Exercise 17.3: Store user preferences
+```html
+<!-- HTML -->
+<style>
+  body.dark-mode { background: black; color: white; }
+  body.light-mode { background: white; color: black; }
+</style>
+
+<select id="themeSelect">
+  <option value="light-mode">Light Mode</option>
+  <option value="dark-mode">Dark Mode</option>
+</select>
+<p>Your theme preference is saved!</p>
+```
+
+**Task:** Save theme preference to localStorage and apply it when page loads.
+
+**Hint:** Save the selected value and apply it as a class on page load
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
+```javascript
+const themeSelect = document.getElementById("themeSelect");
+const savedTheme = localStorage.getItem("theme") || "light-mode";
+
+themeSelect.value = savedTheme;
+document.body.className = savedTheme;
+
+themeSelect.addEventListener("change", function() {
+  localStorage.setItem("theme", themeSelect.value);
+  document.body.className = themeSelect.value;
+});
+
+// Load saved theme on page load
+window.addEventListener("load", function() {
+  const theme = localStorage.getItem("theme") || "light-mode";
+  themeSelect.value = theme;
+  document.body.className = theme;
+});
+```
+
+</details>
+
+---
+
 ## 📚 Level 18: Advanced Filtering and Sorting
 
 ### Exercise 18.1: Sort items by name
@@ -780,6 +986,62 @@ filterBtn.addEventListener("click", function() {
 
 ---
 
+### Exercise 18.3: Filter and count results
+```html
+<!-- HTML -->
+<input id="searchInput" type="text" placeholder="Search fruits...">
+<button id="clearBtn">Clear</button>
+<div id="count">Results: 0</div>
+<ul id="fruits">
+  <li>Apple</li>
+  <li>Apricot</li>
+  <li>Banana</li>
+  <li>Blueberry</li>
+  <li>Cherry</li>
+  <li>Avocado</li>
+</ul>
+```
+
+**Task:** Filter fruits by search term and display the count of matching results.
+
+**Hint:** Filter the list items based on input value and count matches
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
+```javascript
+const searchInput = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearBtn");
+const fruitsUl = document.getElementById("fruits");
+const countDiv = document.getElementById("count");
+
+searchInput.addEventListener("input", function() {
+  const query = searchInput.value.toLowerCase();
+  const fruits = fruitsUl.querySelectorAll("li");
+  
+  let count = 0;
+  fruits.forEach(fruit => {
+    if (fruit.textContent.toLowerCase().includes(query)) {
+      fruit.style.display = "list-item";
+      count++;
+    } else {
+      fruit.style.display = "none";
+    }
+  });
+  
+  countDiv.textContent = `Results: ${count}`;
+});
+
+clearBtn.addEventListener("click", function() {
+  searchInput.value = "";
+  searchInput.dispatchEvent(new Event("input"));
+});
+```
+
+</details>
+
+---
+
 ## 📚 Level 19: Fetch and API
 
 ### Exercise 19.1: Fetch JSON data
@@ -863,6 +1125,54 @@ btn.addEventListener("click", function() {
 
 ---
 
+### Exercise 19.3: Fetch with error handling
+```html
+<!-- HTML -->
+<button id="fetchBtn">Fetch Data</button>
+<div id="result"></div>
+<div id="error" style="color: red;"></div>
+```
+
+**Task:** Fetch data and handle errors gracefully if the request fails.
+
+**Hint:** Use `.catch()` to handle fetch errors
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
+```javascript
+const fetchBtn = document.getElementById("fetchBtn");
+const result = document.getElementById("result");
+const error = document.getElementById("error");
+
+fetchBtn.addEventListener("click", function() {
+  error.textContent = "";
+  result.textContent = "Loading...";
+  
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      result.innerHTML = `
+        <h3>${data.title}</h3>
+        <p>${data.body}</p>
+      `;
+    })
+    .catch(err => {
+      error.textContent = `Error: ${err.message}`;
+      result.textContent = "";
+    });
+});
+```
+
+</details>
+
+---
+
 ## 📚 Level 20: Search in Real-time
 
 ### Exercise 20.1: Live search
@@ -935,6 +1245,69 @@ searchBox.addEventListener("input", function() {
     status.textContent = `Found ${filtered.length} results`;
   }, 500);
 });
+```
+
+</details>
+
+---
+
+### Exercise 20.3: Search with category filter
+```html
+<!-- HTML -->
+<style>
+  .result-item { padding: 10px; border-bottom: 1px solid #ccc; }
+</style>
+
+<select id="categoryFilter">
+  <option value="">All Categories</option>
+  <option value="fruit">Fruit</option>
+  <option value="vegetable">Vegetable</option>
+</select>
+
+<input id="searchBox" type="text" placeholder="Search items...">
+<div id="results"></div>
+```
+
+**Task:** Filter items by both category AND search term simultaneously.
+
+**Hint:** Filter by both conditions before displaying results
+
+<details>
+<summary>🔍 Click to reveal solution</summary>
+
+```javascript
+const categoryFilter = document.getElementById("categoryFilter");
+const searchBox = document.getElementById("searchBox");
+const results = document.getElementById("results");
+
+const items = [
+  { name: "Apple", category: "fruit" },
+  { name: "Banana", category: "fruit" },
+  { name: "Carrot", category: "vegetable" },
+  { name: "Cucumber", category: "vegetable" },
+  { name: "Orange", category: "fruit" }
+];
+
+function filterItems() {
+  const searchQuery = searchBox.value.toLowerCase();
+  const selectedCategory = categoryFilter.value;
+  
+  const filtered = items.filter(item => {
+    const matchesSearch = item.name.toLowerCase().includes(searchQuery);
+    const matchesCategory = selectedCategory === "" || item.category === selectedCategory;
+    
+    return matchesSearch && matchesCategory;
+  });
+  
+  results.innerHTML = filtered.map(item => `
+    <div class="result-item">
+      <strong>${item.name}</strong> <em>(${item.category})</em>
+    </div>
+  `).join("");
+}
+
+searchBox.addEventListener("input", filterItems);
+categoryFilter.addEventListener("change", filterItems);
 ```
 
 </details>
